@@ -4,15 +4,27 @@ struct Node{
 	int data;
 	struct Node* next;	
 };
-//struct Node* head;
 void Insert(Node** pointerHead,int x){
-	Node* temp=(Node*)malloc(sizeof(struct Node));
+	Node* t;
+	Node* temp=*pointerHead;
+	if(*pointerHead==NULL){
+	temp=(Node*)malloc(sizeof(struct Node));
 	temp->data=x;
-	temp->next=*pointerHead;
+	temp->next=0;
 	*pointerHead=temp;
+	}
+	else{
+		while(temp->next!=NULL){
+			temp=temp->next;
+		}
+		t=(Node*)malloc(sizeof(struct Node));
+		t->data=x;
+		t->next=0;
+		temp->next=t;
+	}
+		
 }
 void Print(Node* head){
-//	Node* temp=head;
 	printf("List is: ");
 	while(head!=NULL){
 		printf(" %d",head->data);
@@ -29,7 +41,7 @@ int main(){
 		printf("Enter the num\n");
 		scanf("%d",&x);
 		Insert(&head,x);
-		Print(head);
 	}
+	Print(head);
 }
 
