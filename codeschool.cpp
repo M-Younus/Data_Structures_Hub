@@ -32,16 +32,32 @@ void Print(Node* head){
 	}
 	printf("\n");
 }
+int Count(Node* head){
+	int c=0;
+	while(head!=NULL){
+		head=head->next;
+		c++;
+	}
+	return c;
+}
 int main(){
 	Node* head=NULL;
 	printf("How many numbers?\n");
-	int n,i,x;
+	int n,i,x,val;char choice;
 	scanf("%d",&n);
 	for(i=0;i<n;i++){
 		printf("Enter the num\n");
 		scanf("%d",&x);
 		Insert(&head,x);
 	}
+	printf("Want to delete:");
+	choice=getche();
+	if(choice=='y'){
+		printf("Enter value for deleting:");
+		scanf("%d",&val);
+		Delete()
+	}
+	printf("Total items in list:%d\n",Count(head));
 	Print(head);
 }
 
