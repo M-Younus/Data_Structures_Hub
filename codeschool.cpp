@@ -40,6 +40,23 @@ int Count(Node* head){
 	}
 	return c;
 }
+void Delete(Node* head,int val){
+	Node* temp=head;
+	while(head!=NULL){
+		if(head->data!=val){
+			head=head->next;
+		}
+		else{
+			head=head->next;
+			head=head->next;
+		}
+	}
+	head=temp;
+	
+	puts("After Delete");
+	Print(head);
+	printf("Total items in list:%d\n",Count(head));
+}
 int main(){
 	Node* head=NULL;
 	printf("How many numbers?\n");
@@ -50,14 +67,15 @@ int main(){
 		scanf("%d",&x);
 		Insert(&head,x);
 	}
+	puts("Before Delete");
+	Print(head);
+	printf("Total items in list:%d\n",Count(head));
 	printf("Want to delete:");
 	choice=getche();
 	if(choice=='y'){
 		printf("Enter value for deleting:");
 		scanf("%d",&val);
-		Delete()
+		Delete(head,val);
 	}
-	printf("Total items in list:%d\n",Count(head));
-	Print(head);
 }
 
