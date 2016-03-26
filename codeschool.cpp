@@ -46,7 +46,7 @@ void Delete(Node* head,int val){
 	Node* old,t;old=head;
 	while(head!=NULL){
 		chk++;
-		if((head->data==val)&&chk==1){
+		if((head->data==val)&&chk){
 			temp=head->next;
 			free(head);
 			head=temp;
