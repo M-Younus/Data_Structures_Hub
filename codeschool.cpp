@@ -1,4 +1,5 @@
 #include<stdio.h>
+#include<conio.h>
 #include<stdlib.h>
 struct Node{
 	int data;
@@ -42,13 +43,16 @@ int Count(Node* head){
 }
 void Delete(Node* head,int val){
 	Node* temp=head;
+	Node* old,t;
 	while(head!=NULL){
 		if(head->data!=val){
+			old=head;
 			head=head->next;
 		}
 		else{
-			head=head->next;
-			head=head->next;
+			old->next=head->next;
+			free(head);
+			head=old->next;
 		}
 	}
 	head=temp;
@@ -71,7 +75,7 @@ int main(){
 	Print(head);
 	printf("Total items in list:%d\n",Count(head));
 	printf("Want to delete:");
-	choice=getche();
+	choice=getche();puts("");
 	if(choice=='y'){
 		printf("Enter value for deleting:");
 		scanf("%d",&val);
