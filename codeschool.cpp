@@ -42,9 +42,16 @@ int Count(Node* head){
 	return c;
 }
 void Delete(Node* head,int val){
-	Node* temp=head;
-	Node* old,t;
+	Node* temp=head;int chk=0;
+	Node* old,t;old=head;
 	while(head!=NULL){
+		chk++;
+		if((head->data==val)&&chk==1){
+			temp=head->next;
+			free(head);
+			head=temp;
+			old=head;
+		}
 		if(head->data!=val){
 			old=head;
 			head=head->next;
