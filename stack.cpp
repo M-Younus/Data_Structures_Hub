@@ -5,7 +5,7 @@ struct Node{
 	int data;
 	Node* next;
 };
-void insert(Node** head,int val){
+void push(Node** head,int val){
 	Node* q=(Node*)malloc(sizeof(Node*));
 	q->data=val;
 	q->next=*head;
@@ -25,11 +25,33 @@ int count(Node* np){
 	}
 	return c;
 }
+int pop(Node** hd){
+	
+//	Node* temp=(*hd);
+	int ext=(*hd)->data;
+//	free(*hd);
+//	Node* t=temp;
+//	printf("\nsds%d",temp->data);
+//	exit(0);
+//	free(*hd);
+	(*hd)=(*hd)->next;
+	return ext;
+	
+}
 main(){
 	Node* head=NULL;
 	
-	insert(&head,3);
-	insert(&head,4);
+	push(&head,3);
+	push(&head,4);
+	push(&head,56);
+	push(&head,34);
+	push(&head,89);
+	puts("Before pop");
+	puts("List is:");
+	disp(head);
+	printf("\nTotal items:%d",count(head));
+	printf("pop item is %d",pop(&head));
+	puts("After pop");
 	puts("List is:");
 	disp(head);
 	printf("\nTotal items:%d",count(head));
