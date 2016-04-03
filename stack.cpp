@@ -51,6 +51,7 @@ main(){
 	disp(head);
 	printf("\nTotal items:%d",count(head));
 	printf("pop item is %d",pop(&head));
+	printf("pop item is %d",pop(&head));
 	puts("After pop");
 	puts("List is:");
 	disp(head);
