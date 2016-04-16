@@ -13,36 +13,34 @@ void disp(Node* head){
 }
 void enq(Node** hd,int val){
 	Node* temp;
+	temp=(*hd);
 	Node* q=(Node*)malloc(sizeof(Node));
-	Node* cp;
-//	q=(*hd);
+	Node* cp=(*hd);
 	if((*hd)==NULL){
+		puts("if");
 		temp=(Node*)malloc(sizeof(Node));
 		temp->data=val;
 		temp->link=NULL;
+		cp=temp;
 	}
 	else{
-		while((*hd)!=NULL){
-			
 			q->data=val;
 			q->link=0;
-			if((*hd)->link!=NULL)
-				{
-				cp=(*hd);
-				(*hd)->link=q;
-				(*hd)=cp->link;
-				}
-
+		while(temp!=NULL){
+				puts("Ds");
+			(*hd)->link=q;
+				temp=temp->link;
+				(*hd)=temp;
+			
 			}
-
 	}
-	(*hd)=temp;
-	
+	(*hd)=cp;
 }
 main(){
 	Node* head=NULL;
 	enq(&head,1);
 	enq(&head,2);
+//	enq(&head,5);
 //	enq(&head,6);
 	
 	disp(head);
