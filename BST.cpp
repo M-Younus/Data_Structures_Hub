@@ -43,34 +43,42 @@ void insert(int data){
 		}
 	}
 }
-Node* search(int data){
-	Node* current=root;
-	while(current->data!=data){
-		if(current==NULL){
-		puts("value ot found");
-	}
-	else{
-		puts("st");
-		if(current->data==data){
-			return current;
-		}
-		else if(current->data<data){
-			current=current->rightChild;
-		}
-		else if(current->data>data){
-			current=current->leftChild;
-		}
-	}
-	}
-	puts("end");
-	
+Node* search(int data) {
+   Node *current = root;
+   printf("Visiting elements: ");
+
+   while(current->data != data) {
+      if(current != NULL)
+      printf("%d ",current->data); 
+      
+      //go to left tree
+
+      if(current->data > data) {
+         current = current->leftChild;
+      }
+      //else go to right tree
+      else {                
+         current = current->rightChild;
+      }
+
+      //not found
+      if(current == NULL) {
+         return NULL;
+      }
+
+      return current;
+   }  
 }
 main(){
 	insert(1);
-//	insert(2);
+	insert(2);
 //	display();
 	Node* hg=search(1);
-	puts("wa");
-//	if()
-	printf("%d",hg->data);
+//	puts("wa");
+//	if(hg==NULL){
+//		puts("null");
+//	}
+//	else
+//	puts("not");
+	printf("dfd %d",hg->data);
 }
