@@ -47,38 +47,33 @@ Node* search(int data) {
    Node *current = root;
    printf("Visiting elements: ");
 
+	if(current->data == data)
+	printf("found");
+	else{
    while(current->data != data) {
+//   	puts("andt");
       if(current != NULL)
-      printf("%d ",current->data); 
+      printf("this %d ",current->data); 
       
-      //go to left tree
-
       if(current->data > data) {
          current = current->leftChild;
       }
-      //else go to right tree
       else {                
          current = current->rightChild;
       }
 
-      //not found
       if(current == NULL) {
          return NULL;
       }
 
       return current;
-   }  
+   } 
+   }
+   return current; 
 }
 main(){
 	insert(1);
 	insert(2);
-//	display();
-	Node* hg=search(1);
-//	puts("wa");
-//	if(hg==NULL){
-//		puts("null");
-//	}
-//	else
-//	puts("not");
-	printf("dfd %d",hg->data);
+	Node* hg=search(2);
+	printf("\n %d",hg->data);
 }

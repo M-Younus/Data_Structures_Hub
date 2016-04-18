@@ -96,8 +96,28 @@ void min(){
 		}
 	}
 }
-void inorder(){
-	
+void preorder(struct node* root) {
+   if(root != NULL) {
+      printf("%d ",root->data);
+      preorder(root->leftChild);
+      preorder(root->rightChild);
+   }
+}
+
+void inorder(struct node* root) {
+   if(root != NULL) {
+      inorder(root->leftChild);
+      printf("%d ",root->data);          
+      inorder(root->rightChild);
+   }
+}
+
+void postorder(struct node* root) {
+   if(root != NULL) {
+      postorder(root->leftChild);
+      postorder(root->rightChild);
+      printf("%d ", root->data);
+   }
 }
 main(){
 	insert(5);
