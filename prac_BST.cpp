@@ -119,6 +119,38 @@ void postorder(struct node* root) {
       printf("%d ", root->data);
    }
 }
+
+node* Delete(node* link,int data){
+	if(link==NULL)
+	return link;
+	else if(data<link->data)
+	link->leftChild=Delete(link->leftChild,data);
+	else if(data>link->data)
+	link->data=Delete(link->rightChild,data);
+	else{
+		if(link->leftChild==NULL&&link->rightChild==NULL){
+			delete link;
+			link=NULL;
+		}
+		else if(link->leftChild==NULL){
+			node* temp=link;
+			link=link->rightChild;
+			delete temp;
+		}
+		else if(link->rightChild==NULL){
+			node* temp=link;
+			link=link->leftChild;
+			delete temp;
+		}
+		else{
+			node* temp=min(link->rightChild);
+			link->data=temp->data;
+			link->data=Delete(link->rightChild,temp->data);
+		}
+	}
+	return link;
+}
+
 main(){
 	insert(5);
 	insert(2);
