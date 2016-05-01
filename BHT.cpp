@@ -2,11 +2,13 @@
 #include<conio.h>
 #include<stdlib.h>
 
-int min(int a,int b){
-	if(a<b)
-	return a;
+int** min(int *a,int *b){
+	if(*a==0)
+	return &b;
+	else if(*b==0)
+	return &a;
 	else
-	return b;
+	return (*a<*b)?&a:&b;
 }
 
 void swap(int *a,int *b){
@@ -18,25 +20,22 @@ void swap(int *a,int *b){
 
 void Delete(int ar[],int size){
 	puts("\nDelete");
-	int i=1;int max=size;int left,right;
+	int i=1;int max=size;int left,right,x,y;
 
 	while(i<=max&&max!=0){
 		printf("%d\n",ar[i]);
 		ar[i]=ar[max];
-		left=ar[2*i];
-		right=ar[2*i+1];
-		if(ar[i]>left){
-			int temp;
-			temp=ar[i];
-			ar[i]=left;
-			ar[i*2]=temp;
+		
+		while(ar[i]<ar[2*i]){
+		x=2*i;y=x+1;
+		if(ar[i]>**min(&ar[x],&ar[y])){
+		swap(&ar[i],*min(&ar[x],&ar[y]));
+		i*=2;
 		}
-		else if(ar[i]>right){
-			int temp;
-			temp=ar[i];
-			ar[i]=right;
-			ar[i*2+1]=temp;
+			else
+			break;
 		}
+		i=1;
 		max--;
 	}
 
@@ -44,14 +43,17 @@ void Delete(int ar[],int size){
 
 main(){
 	
-//	int a=3;
-//	int b=5;
-//	swap(&a,&b);
-//	printf("a=%d,,b=%d",a,b);
+//	int a=3,b=4,c=5;
+//	swap(&c,*min(&a,&b));
+//	printf("a=%d,b=%d,c=%d",a,b,c);
 //	
 //	exit(0);
 	
 	int arr[]={0,5,10,17,-5,13,10,11};int i,j,k,x,y,z;
+	
+//	printf("%d",arr[15]);
+//	exit(49);
+	
 	int bhp[8];
 	for(j=1;j<=7;j++){
 		i=j;
@@ -65,9 +67,8 @@ main(){
 			y=bhp[i/2];
 			
 			while(x<y&&i!=1){
-				
-				bhp[i/2]=x;
-				bhp[i]=y;
+			
+				swap(&bhp[i],&bhp[i/2]);
 				
 				i/=2;
 				

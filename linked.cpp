@@ -5,6 +5,31 @@ struct Node{
 	int data;
 	struct Node* next;	
 };
+
+void append(Node** put,int val,int index){
+	Node* temp=*put;
+	int i=0;
+	while(i<=index){
+		puts("\nwhile\n");
+		if(i==index-1){
+			puts("\nif\n");
+			Node* t=(Node*)malloc(sizeof(Node));
+			Node* f=(*put)->next;
+			puts("\nlink");
+			t->data=val;
+			t->next=f;
+			(*put)->next=t;
+			i++;
+		}
+		else{
+			puts("\nelse\n");
+			(*put)=(*put)->next;
+			i++;
+		}
+	}
+	*put=temp;
+}
+
 void Insert(Node** pointerHead,int x){
 	Node* t;
 	Node* temp=*pointerHead;
@@ -78,6 +103,12 @@ int main(){
 		scanf("%d",&x);
 		Insert(&head,x);
 	}
+	
+	//append
+	puts("\nappend 5 at inex 2");
+	append(&head,5,2);	
+	append(&head,7,1);
+	append(&head,9,5);
 	puts("Before Delete");
 	Print(head);
 	printf("Total items in list:%d\n",Count(head));
