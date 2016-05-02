@@ -6,44 +6,43 @@ struct Node{
 	int data; Node* link;
 };
 
-void disp(Node* head){
-	while (head != NULL){
-		printf("\n%d", head->data);
-		head = head->link;
+void disp(Node* front){
+	while (front != NULL){
+		printf("\n%d", front->data);
+		front = front->link;
 	}
 }
-void enq(Node** hd, int val){
-	Node* temp;
-	temp = (*hd);
-	Node* q = (Node*)malloc(sizeof(Node));
-	Node* cp = (*hd);
-	if ((*hd) == NULL){
-		puts("if");
-		temp = (Node*)malloc(sizeof(Node));
+void enq(Node** front,Node** rear, int val){
+	Node* temp = (Node*)malloc(sizeof(Node));
+	if (*front == NULL&&*rear == NULL){
 		temp->data = val;
 		temp->link = NULL;
-		cp = temp;
+		*front = *rear = temp;
+		(*front)->link = *rear;
 	}
 	else{
-		q->data = val;
-		q->link = 0;
-		while (temp != NULL){
-			puts("Ds");
-			(*hd)->link = q;
-			temp = temp->link;
-			(*hd) = temp;
-		}
+		temp->data = val;
+		temp->link = NULL;
+		(*rear)->link = temp;
+		*rear = temp;
 	}
-	(*hd) = cp;
+}
+void deque(Node** front){
+	Node* temp = (*front)->link;
+	free(*front);
+	*front = temp;
 }
 int main(){
-	Node* head = NULL;
-	enq(&head, 1);
-	//enq(&head, 2);
-	//	enq(&head,5);
-	//	enq(&head,6);
-
-	disp(head);
+	Node* front=NULL,*rear = NULL;
+	enq(&front, &rear, 1);
+	enq(&front, &rear, 3);
+	enq(&front, &rear, 6);
+	enq(&front, &rear, 4);
+	disp(front);
+	puts("");
+	deque(&front);
+	deque(&front);
+	disp(front);
 	getchar();
 	return 0;
 }
