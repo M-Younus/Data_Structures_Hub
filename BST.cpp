@@ -1,6 +1,7 @@
 #include<stdio.h>
 #include<conio.h>
 #include<stdlib.h>
+#include<iostream>
 struct Node{
 	int data;
 	Node * leftChild;
@@ -71,9 +72,11 @@ Node* search(int data) {
    }
    return current; 
 }
-main(){
+int main(){
 	insert(1);
 	insert(2);
 	Node* hg=search(2);
 	printf("\n %d",hg->data);
+	getchar();
+	return 0;
 }

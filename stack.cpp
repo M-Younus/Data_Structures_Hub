@@ -1,6 +1,7 @@
 #include<stdio.h>
 #include<conio.h>
 #include<stdlib.h>
+#include<iostream>
 struct Node{
 	int data;
 	Node* next;
@@ -36,9 +37,8 @@ int pop(Node** hd){
 //	free(*hd);
 	(*hd)=(*hd)->next;
 	return ext;
-	
 }
-main(){
+int main(){
 	Node* head=NULL;
 	
 	push(&head,3);
@@ -56,7 +56,6 @@ main(){
 	puts("List is:");
 	disp(head);
 	printf("\nTotal items:%d",count(head));
-
-	
-	
+	getchar();
+	return 0;
 }

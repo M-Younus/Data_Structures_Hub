@@ -6,6 +6,28 @@ struct Node{
 	struct Node* next;	
 };
 
+int Count(Node* head){
+	int c=0;
+	while(head!=NULL){
+		head=head->next;
+		c++;
+	}
+	return c;
+}
+
+void reversePrint(Node* node){
+	Node* temp=node;
+	int size=Count(node);
+	int ar[size];int i=0;
+	while(node!=NULL){
+		ar[i]=node->data;
+		node=node->next;
+		i++;
+	}
+	for(i=size-1;i>=0;i--)
+	printf("\n%d",ar[i]);
+}
+
 void append(Node** put,int val,int index){
 	Node* temp=*put;
 	int i=0;
@@ -58,14 +80,7 @@ void Print(Node* head){
 	}
 	printf("\n");
 }
-int Count(Node* head){
-	int c=0;
-	while(head!=NULL){
-		head=head->next;
-		c++;
-	}
-	return c;
-}
+
 void Delete(Node* head,int val){
 	Node* temp=head;int chk=0;
 	Node* old,t;old=head;
@@ -105,11 +120,13 @@ int main(){
 	}
 	
 	//append
-	puts("\nappend 5 at inex 2");
-	append(&head,5,2);	
-	append(&head,7,1);
-	append(&head,9,5);
-	puts("Before Delete");
+//	puts("\nappend 5 at inex 2");
+//	append(&head,5,2);	
+//	append(&head,7,1);
+//	append(&head,9,5);
+	//reverse
+//	reversePrint(head);
+	puts("\nBefore Delete");
 	Print(head);
 	printf("Total items in list:%d\n",Count(head));
 	printf("Want to delete:");
