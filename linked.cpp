@@ -1,31 +1,68 @@
 #include<stdio.h>
 #include<conio.h>
 #include<stdlib.h>
+#include<iostream>
+
+using namespace std;
+
 struct Node{
 	int data;
 	struct Node* next;	
 };
-
+void Print(Node* head){
+	printf("List is: ");
+	while (head != NULL){
+		printf(" %d", head->data);
+		head = head->next;
+	}
+	printf("\n");
+}
 int Count(Node* head){
+	Node* temp = head;
 	int c=0;
-	while(head!=NULL){
-		head=head->next;
+	while(temp!=NULL){
+		temp=temp->next;
 		c++;
 	}
+	puts("\nprint cal in count");
+	Print(head);
 	return c;
 }
 
-void reversePrint(Node* node){
-	Node* temp=node;
-	int size=Count(node);
-	int ar[size];int i=0;
-	while(node!=NULL){
-		ar[i]=node->data;
-		node=node->next;
-		i++;
+//void reversePrint(Node* node){
+//	Node* temp=node;
+//	int size=Count(node);
+//	int ar[size];int i=0;
+//	while(node!=NULL){
+//		ar[i]=node->data;
+//		node=node->next;
+//		i++;
+//	}
+//	for(i=size-1;i>=0;i--)
+//	printf("\n%d",ar[i]);
+//}
+
+void reverse(Node* head){
+	Node* temp = head; Node *temp2 = NULL;
+	temp->next = NULL; Node* t3;
+	/*Node* end = head;
+	while (end != NULL)
+		end = end->next;
+	end = head;*/
+	while (head!=NULL)
+	{
+		head = head->next;
+		t3 = temp2;
+		temp2->next = temp;
+		temp = temp2;
+		//if (t3->next != NULL)
+			temp2 = t3->next;
+		//else
+			//temp2 = t3;
 	}
-	for(i=size-1;i>=0;i--)
-	printf("\n%d",ar[i]);
+	head = t3;
+	puts("\nRevers print");
+	Print(head);
 }
 
 void append(Node** put,int val,int index){
@@ -72,14 +109,7 @@ void Insert(Node** pointerHead,int x){
 	}
 		
 }
-void Print(Node* head){
-	printf("List is: ");
-	while(head!=NULL){
-		printf(" %d",head->data);
-		head=head->next ;
-	}
-	printf("\n");
-}
+
 
 void Delete(Node* head,int val){
 	Node* temp=head;int chk=0;
@@ -112,10 +142,12 @@ int main(){
 	Node* head=NULL;
 	printf("How many numbers?\n");
 	int n,i,x,val;char choice;
-	scanf("%d",&n);
+	//scanf("%d",&n);
+	cin >> n;
 	for(i=0;i<n;i++){
 		printf("Enter the num\n");
-		scanf("%d",&x);
+		//scanf("%d",&x);
+		cin >> x;
 		Insert(&head,x);
 	}
 	
@@ -130,11 +162,17 @@ int main(){
 	Print(head);
 	printf("Total items in list:%d\n",Count(head));
 	printf("Want to delete:");
-	choice=getche();puts("");
+	//choice=getche();puts("");
+	cin >> choice;
 	if(choice=='y'){
 		printf("Enter value for deleting:");
-		scanf("%d",&val);
+		//scanf("%d",&val);
+		cin >> val;
 		Delete(head,val);
 	}
+	puts("\n reverse called");
+	reverse(head);
+	getchar();
+	return 0;
 }
 
