@@ -7,7 +7,7 @@ using namespace std;
 
 struct Node{
 	int data;
-	struct Node* next;	
+	struct Node* next;
 };
 void Print(Node* head){
 	printf("List is: ");
@@ -19,9 +19,9 @@ void Print(Node* head){
 }
 int Count(Node* head){
 	Node* temp = head;
-	int c=0;
-	while(temp!=NULL){
-		temp=temp->next;
+	int c = 0;
+	while (temp != NULL){
+		temp = temp->next;
 		c++;
 	}
 	puts("\nprint cal in count");
@@ -43,132 +43,124 @@ int Count(Node* head){
 //}
 
 void reverse(Node* head){
-	Node* temp = head; Node *temp2 = NULL;
-	temp->next = NULL; Node* t3;
-	/*Node* end = head;
-	while (end != NULL)
-		end = end->next;
-	end = head;*/
-	while (head!=NULL)
+	Node *temp = head; Node *temp2 = NULL; Node* t3;
+
+	while (temp != NULL)
 	{
-		head = head->next;
 		t3 = temp2;
-		temp2->next = temp;
-		temp = temp2;
-		//if (t3->next != NULL)
-			temp2 = t3->next;
-		//else
-			//temp2 = t3;
+		temp2 = temp;
+		temp = temp->next;
+		temp2->next = t3;
 	}
-	head = t3;
+	head = temp2;
 	puts("\nRevers print");
 	Print(head);
 }
 
-void append(Node** put,int val,int index){
-	Node* temp=*put;
-	int i=0;
-	while(i<=index){
+void append(Node** put, int val, int index){
+	Node* temp = *put;
+	int i = 0;
+	while (i <= index){
 		puts("\nwhile\n");
-		if(i==index-1){
+		if (i == index - 1){
 			puts("\nif\n");
-			Node* t=(Node*)malloc(sizeof(Node));
-			Node* f=(*put)->next;
+			Node* t = (Node*)malloc(sizeof(Node));
+			Node* f = (*put)->next;
 			puts("\nlink");
-			t->data=val;
-			t->next=f;
-			(*put)->next=t;
+			t->data = val;
+			t->next = f;
+			(*put)->next = t;
 			i++;
 		}
 		else{
 			puts("\nelse\n");
-			(*put)=(*put)->next;
+			(*put) = (*put)->next;
 			i++;
 		}
 	}
-	*put=temp;
+	*put = temp;
 }
 
-void Insert(Node** pointerHead,int x){
+void Insert(Node** pointerHead, int x){
 	Node* t;
-	Node* temp=*pointerHead;
-	if(*pointerHead==NULL){
-	temp=(Node*)malloc(sizeof(struct Node));
-	temp->data=x;
-	temp->next=0;
-	*pointerHead=temp;
+	Node* temp = *pointerHead;
+	if (*pointerHead == NULL){
+		temp = (Node*)malloc(sizeof(struct Node));
+		temp->data = x;
+		temp->next = 0;
+		*pointerHead = temp;
 	}
 	else{
-		while(temp->next!=NULL){
-			temp=temp->next;
+		while (temp->next != NULL){
+			temp = temp->next;
 		}
-		t=(Node*)malloc(sizeof(struct Node));
-		t->data=x;
-		t->next=0;
-		temp->next=t;
+		t = (Node*)malloc(sizeof(struct Node));
+		t->data = x;
+		t->next = 0;
+		temp->next = t;
 	}
-		
+
 }
 
 
-void Delete(Node* head,int val){
-	Node* temp=head;int chk=0;
-	Node* old,t;old=head;
-	while(head!=NULL){
+void Delete(Node* head, int val){
+	Node* temp = head; int chk = 0;
+	Node* old, t; old = head;
+	while (head != NULL){
 		chk++;
-		if((head->data==val)&&chk==1){
-			temp=head->next;
+		if ((head->data == val) && chk == 1){
+			temp = head->next;
 			free(head);
-			head=temp;
-			old=head;
+			head = temp;
+			old = head;
 		}
-		if(head->data!=val){
-			old=head;
-			head=head->next;
+		if (head->data != val){
+			old = head;
+			head = head->next;
 		}
 		else{
-			old->next=head->next;
+			old->next = head->next;
 			free(head);
-			head=old->next;
+			head = old->next;
 		}
 	}
-	head=temp;
-	
+	head = temp;
+
 	puts("After Delete");
 	Print(head);
-	printf("Total items in list:%d\n",Count(head));
+	printf("Total items in list:%d\n", Count(head));
 }
 int main(){
-	Node* head=NULL;
+	Node* head = NULL;
 	printf("How many numbers?\n");
-	int n,i,x,val;char choice;
+	int n, i, x, val; char choice;
 	//scanf("%d",&n);
 	cin >> n;
-	for(i=0;i<n;i++){
+	for (i = 0; i < n; i++){
 		printf("Enter the num\n");
 		//scanf("%d",&x);
 		cin >> x;
-		Insert(&head,x);
+		Insert(&head, x);
 	}
-	
+
 	//append
-//	puts("\nappend 5 at inex 2");
-//	append(&head,5,2);	
-//	append(&head,7,1);
-//	append(&head,9,5);
+	//	puts("\nappend 5 at inex 2");
+	//	append(&head,5,2);	
+	//	append(&head,7,1);
+	//	append(&head,9,5);
 	//reverse
-//	reversePrint(head);
+	//	reversePrint(head);
 	puts("\nBefore Delete");
 	Print(head);
-	printf("Total items in list:%d\n",Count(head));
+	printf("Total items in list:%d\n", Count(head));
 	printf("Want to delete:");
 	//choice=getche();puts("");
 	cin >> choice;
-	if(choice=='y'){
+	if (choice == 'y'){
 		printf("Enter value for deleting:");
 		//scanf("%d",&val);
 		cin >> val;
-		Delete(head,val);
+		Delete(head, val);
 	}
 	puts("\n reverse called");
 	reverse(head);
