@@ -52,10 +52,11 @@ void reverse(Node* head){
 		temp = temp->next;
 		temp2->next = t3;
 	}
-	head = temp2;
 	puts("\nRevers print");
-	Print(head);
+	Print(temp2);
 }
+
+
 
 void append(Node** put, int val, int index){
 	Node* temp = *put;
@@ -130,6 +131,14 @@ void Delete(Node* head, int val){
 	Print(head);
 	printf("Total items in list:%d\n", Count(head));
 }
+
+void rev_stack(Node** head,int val){
+	Node* temp = new Node;
+	temp->data =val;
+	temp->next = (*head);
+	*head = temp;
+}
+
 int main(){
 	Node* head = NULL;
 	printf("How many numbers?\n");
@@ -162,8 +171,17 @@ int main(){
 		cin >> val;
 		Delete(head, val);
 	}
-	puts("\n reverse called");
-	reverse(head);
+	/*puts("\n reverse called");
+	reverse(head);*/
+	//reverse  stak called
+	Node* temp = NULL;
+	while (head!=NULL)
+	{
+		rev_stack(&temp,head->data);
+		head = head->next;
+	}
+	puts("\nafter stack rev");
+	Print(temp);
 	getchar();
 	return 0;
 }
