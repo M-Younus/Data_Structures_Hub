@@ -1,5 +1,6 @@
-#include <stdlib.h>
-#include <stdio.h>
+//#include <stdio.h>
+//#include <stdlib.h>
+#include <iostream>
 int main(){
     int dim,N=1,PoS,ReqAdd=0,i,j;
     printf("enter no. of dimensions:\n");
@@ -32,4 +33,6 @@ int main(){
         ReqAdd=ReqAdd+PoS;
     }
     printf("value at given address=%d",data[ReqAdd]);
+	getchar();
+	return 0;
 }
