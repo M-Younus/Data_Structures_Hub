@@ -125,10 +125,6 @@ void rev_stack(Node** head,int val){
 	*head = temp;
 }
 
-void hashing(){
-
-}
-
 int main(){
 
 	Node* head = NULL;

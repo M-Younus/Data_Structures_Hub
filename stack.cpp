@@ -28,13 +28,9 @@ int count(Node* np){
 }
 int pop(Node** hd){
 	
-//	Node* temp=(*hd);
+
 	int ext=(*hd)->data;
-//	free(*hd);
-//	Node* t=temp;
-//	printf("\nsds%d",temp->data);
-//	exit(0);
-//	free(*hd);
+
 	(*hd)=(*hd)->next;
 	return ext;
 }

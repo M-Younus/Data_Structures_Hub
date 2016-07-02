@@ -21,6 +21,7 @@ void swap(int *a, int *b){
 	*b = temp;
 }
 
+//wrong
 void Delete(int ar[], int size){
 	puts("\nDelete");
 	int i = 1; int max = size; int left, right, x, y;
@@ -47,13 +48,8 @@ void Delete(int ar[], int size){
 
 int main(){
 
-	//	int a=3,b=4,c=5;
-	//	swap(&c,*min(&a,&b));
-	//	printf("a=%d,b=%d,c=%d",a,b,c);
-	//	
-	//	exit(0);
 
-	int arr[] = { 0, 5, 10, 17, -5, 13, 10, 11 }; int i, j, k, x, y, z;
+	int arr[] = { 0, 3, 9, 1, 5, 2, 7, 11 }; int i, j, k, x, y, z;
 
 	//	printf("%d",arr[15]);
 	//	exit(49);
@@ -69,8 +65,8 @@ int main(){
 			bhp[i] = arr[i];
 			x = bhp[i];
 			y = bhp[i / 2];
-
-			while (x < y&&i != 1){
+			//if > then print max heap if < then print min heap tree
+			while (x > y&&i != 1){
 
 				swap(&bhp[i], &bhp[i / 2]);
 
@@ -87,7 +83,7 @@ int main(){
 	for (i = 1; i <= 7; i++)
 		printf("\n%d", bhp[i]);
 
-	Delete(bhp, 7);
+//	Delete(bhp, 7);
 	getchar();
 	return 0;
 }
