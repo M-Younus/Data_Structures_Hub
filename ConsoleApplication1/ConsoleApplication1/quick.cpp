@@ -1,5 +1,10 @@
 #include<iostream>
 using namespace std;
+void swap(int *a, int *b){
+	*a = *a + *b;
+	*b = *a - *b;
+	*a = *a - *b;
+}
 int Partition(int *A, int start, int end){
 	int pivot = A[end];
 	int partitionIndex = start;
